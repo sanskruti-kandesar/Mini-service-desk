@@ -1,0 +1,150 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+}
+a:hover {
+    color: #ff6600;
+}
+
+.app__showTicket-main {
+    margin-top: 80px;
+}
+
+.app__showTicket-table {
+    margin: 0 140px;
+    border: 2px solid #003399;
+    padding: 20px;
+}
+.app__showTicket-ticket h2 {
+    color: #003399;
+}
+.app__showTicket-ticket p {
+    color: #ff6600;
+}
+.app__showTicket-ticket span {
+    color: #404040;
+}
+
+/*                 HEADER                */
+
+.app__header {
+    width: 100%;
+
+    padding: 0 15px;
+    display: flex;
+    flex-flow: row wrap;
+
+    justify-content: space-between;
+    position: fixed;
+    /* change height  */
+    height: 80px;
+
+    background: url("../images/background.png");
+    background-size: cover;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(2px);
+    z-index: 2;
+    
+    /* Defines how the width and height of an element are calculated */
+    box-sizing: border-box;
+}
+
+.app__header-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.app__header-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px;
+}
+.app__header-h1 {
+    color: white;
+    font-size: 25px;
+}
+.app__header-menu {
+    display: none;
+}
+.app__header-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app__header-list-item {
+    padding: 18px 18px 22px;
+    position: relative;
+    color: white;
+}
+.app__header-list-item:hover {
+    border-bottom: 4px solid #ff6600;
+}
+.app__header-cancel {
+    display: none;
+    height: 60px;
+    width: 60px;
+}
+.app__header-menu-list{
+    background-color: #003399;
+    list-style-type: none;
+    position: absolute;
+    right: 35;
+    padding: 5px;
+}
+.app__header-menu-item {
+    padding: 5px;
+}
+.app__header-menu-item:hover, .active {
+    transition: 0.3s ease-out;
+    color: #ff6600;
+}
+
+@media screen and (max-width:540px) {
+    .app__header {
+        height: 60px;
+        padding: 0 15px;
+    }
+    .app__header-div {
+        height: 50px;
+    }
+    .app__header-logo {
+        margin-left: 0;
+    }
+    .app__header-h1 {
+        font-size: 23px;
+    }
+    .app__header-img {
+        display: flex;
+        height: 70px !important;
+        width: 70px !important;
+        align-items: center;
+    }
+}
+@media screen and (max-width:720px) {
+    .app__showTicket-table {
+        margin: 0 70px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .app__header-list{
+        display: none;
+    }
+    .app__header-menu {
+        display: block;
+    }
+    .app__header-img {
+        display: flex;
+        height: 80px;
+        width: 80px;
+        align-items: center;
+    }
+}
