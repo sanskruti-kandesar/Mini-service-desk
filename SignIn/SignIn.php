@@ -15,7 +15,6 @@
     $emailErr = $passwordErr = "";
     $email = $password = $showAlert = "";
 
-    // if(isset($_POST[login_user])) {
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         include '../Register/connect.php';
 

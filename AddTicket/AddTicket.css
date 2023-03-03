@@ -24,7 +24,7 @@ a:hover {
 }
 .submit_ticket-form label {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }
   
 .submit_ticket-form p {
@@ -64,7 +64,10 @@ a:hover {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 3px;
-    margin: 8px;
+    margin: 5px;
+}
+.submit_ticket-form-file {
+    margin: 8px 0;
 }
   
 /*              ARTICLE               */

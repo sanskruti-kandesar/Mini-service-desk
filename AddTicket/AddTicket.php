@@ -13,35 +13,56 @@
 <?php
 
     $subject = $message = $category = "";
-    $subErr = $msgErr = $alert = "";
+    $subErr = $msgErr = $alert = ""; 
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        include '../Register/connect.php';
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            include '../Register/connect.php';
 
-        $subject = test_input($_POST["subject"]);
-        if(empty($subject)) {
-            $subErr = "* Subject is required";
-        }
-        $message = test_input($_POST["message"]);
-        if(empty($message)) {
-            $msgErr = "* Message is required";
-        }
-
-        $category = test_input($_POST["category"]);
-
-        if(!empty($subject) && !empty($message)) {
-            $sql = "INSERT INTO tickets (ticketSubject, ticketMessage, category, userID, ticketStatus)
-                    VALUES ('$subject', '$message', '$category', {$_SESSION['id']} , 'sent')";
-            $result = mysqli_query($conn , $sql);
-            if (mysqli_affected_rows($conn) > 0) {
-                // $alert = "<h1>Ticket added successfully</h1>";
-                header("Location: ../showTickets/showTickets.php");
-            } else {
-                $alert = "<h1>Couldn't add ticket</h1>";
+             //                  VALIDATING DATA 
+            $subject = test_input($_POST["subject"]);
+            if(empty($subject)) {
+                $subErr = "* Subject is required";
             }
-        }
+            $message = test_input($_POST["message"]);
+            if(empty($message)) {
+                $msgErr = "* Message is required";
+            }
 
-    }
+            $category = test_input($_POST["category"]);
+
+            //                  FILE UPLOAD
+
+            if(isset($_FILES['attachment'])) {
+                $file = $_FILES['attachment'];
+                $userID = $_SESSION['id'];
+                
+                $file_name = pathinfo($file['name'], PATHINFO_FILENAME);
+                $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+                $filename = $file_name . "_" .  round(microtime(true) * 1000) . "." .  $file_extension;
+                $upload = '../uploads/' . $userID . '/';
+                $filepath = $upload . $filename;
+                
+                if(!is_dir($upload)){
+                    mkdir($upload);
+                }
+                
+                move_uploaded_file($file['tmp_name'], $filepath);
+            }
+
+            //              INSERT DATA INTO DATABASE
+
+            if(!empty($subject) && !empty($message)) {
+                $sql = "INSERT INTO tickets (ticketSubject, ticketMessage, category, userID, ticketStatus, imagePath)
+                        VALUES ('$subject', '$message', '$category', {$_SESSION['id']} , 'sent', '$filepath')";
+                $result = mysqli_query($conn , $sql);
+                if (mysqli_affected_rows($conn) > 0) {
+                    header("Location: ../showTickets/showTickets.php");
+                } else {
+                    $alert = "<h1>Couldn't add ticket</h1>";
+                }
+            }
+
+        }
     function test_input($data){
         $data = trim($data);
         $data = stripcslashes($data);
@@ -113,7 +134,7 @@
         <div class="submit_ticket-form">
             <h1>Submit a ticket</h1>
             <p>Ticket Information</p>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" enctype="multipart/form-data">
 
                 <label for="subject">Subject</lable><br>
                 <input type="text" name="subject" class="submit_ticket-form-sub">
@@ -133,6 +154,9 @@
                     <option>Terms and Policies</option>
                     <option>Others</option>
                 </select><br>
+
+                <label for="attachment">Attach file</label><br>
+                <input type="file" name="attachment" class="submit_ticket-form-file"><br><br>
 
                 <span style="color: #FF0000"><?php echo $alert ?></span>
                 <input type="submit" value="submit" name="submit">
