@@ -37,16 +37,15 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
-$route['SignIn'] = "signin";
-$route['Register'] = "register";
-$route['AddTicket'] = "addticket";
-$route['showtickets'] = "showtickets";
-$route['imageview'] = "imageview";
-$route['logout'] = "logout";
-$route['default_controller'] = "home/view";
-$route['404_override'] = '';
-
+$route['default_controller'] = "main";
+// $route['(:any)'] = "main";
+// $route['home'] = "main";
+// $route['signIn'] = "main";
+// $route['Register'] = "main";
+// $route['AddTicket'] = "main";
+// $route['showtickets'] = "main";
+// $route['logout'] = "logout";
+$route['404_override'] = 'main';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -1,0 +1,319 @@
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <!-- <script src="scripts/service.js"></script> -->
+    <!-- <script src="scripts/Filters.js"></script> -->
+    <!-- https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js -->
+    <!-- https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js -->
+    <!-- https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js -->
+    
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<div>
+        {{ 10 + 20 }}
+        {{ 10 == 20 }}
+        {{ 10 == 10 }} 
+        {{ {name: 'sans', age: '30'}.name }}
+        {{ ['value1', 'value2', 'value3'][2] }}<br>
+    </div>
+<!-- <div ng-controller="myController1">
+        <div>
+            {{ message }}<br>
+        </div>
+        <div>
+            value1 : {{ anObject.key1 }}<br>
+            value2 : {{ anObject.key2 }}<br>
+            value3 : {{ anObject.key3 }}<br>
+            value3 : {{ anObject.wrongKey }}<br>
+        </div>
+    </div> -->
+<!-- <div ng-controller="imageController">
+        <div>
+            value1 : {{ object2.key1 }}<br>
+            <img src="{{ object2.image1 }}" style="height:150px; width: 180px;" />
+            <img ng-src="{{ object2.image1 }}" style="height:150px; width: 180px;" />
+        </div>
+    </div> -->
+<!-- <div ng-controller="dataBinding">
+        <div>
+            value1 : {{ message }}<br>
+            <input type="text" ng-model="message"><br>
+            value1 : {{ message2 }}<br>
+            <input type="text" ng-model="message2"><br>
+        </div>
+        <div>
+            <input type="text" ng-model="bindObject.key1"><br>
+            value1 : {{ bindObject.key1 }}<br>
+        </div>
+    </div> -->  
+<!-- <div ng-controller="ngRepeat">
+      <table>
+        <thead>
+            <tr>
+                <th>key1</th>
+                <th>key2</th>
+                <th>key3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="object in repeatObject">
+                <td>{{ object.key1 }}</td>
+                <td>{{ object.key2 }}</td>
+                <td>{{ object.key3 }}</td>
+            </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li ng-repeat="state in states" ng-init = "pi = $index">
+            {{ state.name }} - index {{ $index }}
+                <ul>
+                    <li ng-repeat="city in state.cities">
+                        {{ city.name }} - {{ pi }} - {{ $parent.$index }} -  index {{ $index }}
+                    </li>
+                </ul>
+        </li>
+      </ul>
+</div> -->
+<!-- <div ng-controller="ngEvent">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Likes</th>
+                <th>Dislikes</th>
+                <th>buttons</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tech in techs">
+                <td>{{ tech.name }}</td>
+                <td>{{ tech.likes }}</td>
+                <td>{{tech.dislikes }}</td>
+                <td>
+                    <input type="button" value="like" ng-click="inLike(tech)" >
+                    <input type="button" value="Dislike" ng-click="inDisLike(tech)" >
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<!-- <div ng-controller="filters">
+    <label for="rows">LIMIT : </label>
+    <input name="rows" type="number" step="1" min="0" max="5" ng-model="rowLimit">
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Release Date</th>
+                <th>Price</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones | limitTo:rowLimit">
+                <td>{{ phone.name | uppercase }}</td>
+                <td>{{ phone.name | lowercase }}</td>
+                <td>{{ phone.releaseDate | date: "dd/MM/yyyy" }}</td>
+                <td>{{ phone.price | number:2 }}</td>
+                <td>{{ phone.price | currency:"₹":1 }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<!-- <div ng-controller="sorting">
+    Order By : <select ng-model="sort">
+        <option value="name">Name ASC</option>
+        <option value="releaseDate">Date ASC</option>
+        <option value="price">Price ASC</option>
+        <option value="-price">Price DESC</option>
+    </select>
+    
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Release Date</th>
+                <th>Price</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones | orderBy:sort">
+                <td>{{ phone.name | uppercase }}</td>
+                <td>{{ phone.name | lowercase }}</td>
+                <td>{{ phone.releaseDate | date: "dd/MM/yyyy" }}</td>
+                <td>{{ phone.price | number:2 }}</td>
+                <td>{{ phone.price | currency:"₹":1 }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<!-- <div ng-controller="sortByClick">
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th ng-click="sortData('name')">
+                    Name<div ng-class="getSortClass('name')"></div>
+                </th>
+                <th ng-click="sortData('releaseDate')">
+                    Release Date<div ng-class="getSortClass('releaseDate')"></div>
+                </th>
+                <th ng-click="sortData('price')">
+                    Price<div ng-class="getSortClass('price')"></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones | orderBy:sortCol:sortRev">
+                <td>{{ phone.name | uppercase }}</td>
+                <td>{{ phone.releaseDate | date: "dd/MM/yyyy" }}</td>
+                <td>{{ phone.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<!-- <div ng-controller="search">
+    Search : <input type="text" placeholder="Search Phone" ng-model="searchText">
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Origin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones | filter:searchText ">
+                <td>{{ phone.name }}</td>
+                <td>{{ phone.price }}</td>
+                <td>{{ phone.origin}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<!-- <div ng-controller="multipleFilter">
+    <input type="text" placeholder="Search Only name" ng-model="searchText.name">
+    <input type="text" placeholder="Search Only origin" ng-model="searchText.origin">
+    <input type="checkbox" ng-model="exactMatch" /> Exact Match
+    
+    <input type="text" placeholder="Search name and origin" ng-model="searchText">
+    
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Origin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones | filter:search">
+                <td>{{ phone.name }}</td>
+                <td>{{ phone.price }}</td>
+                <td>{{ phone.origin }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<!-- <div ng-controller="customFilters">
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Colour</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones">
+                <td>{{ phone.name }}</td>
+                <td>{{ phone.price }}</td>
+                <td>{{ phone.colour | colour }}</td>
+            </tr>
+        </tbody>
+    </table> 
+</div> -->
+<!-- <div ng-controller="hideANDshow">
+    <input type="checkbox" ng-model="hidePrice"> Hide Price
+    <input type="checkbox" ng-model="showColour"> Show Colour
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th ng-hide="hidePrice">Price</th>
+                <th ng-show="hidePrice">Price</th>
+                <th ng-show="showColour">Colour</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones">
+                <td>{{ phone.name }}</td>
+                <td ng-hide="hidePrice">{{ phone.price }}</td>
+                <td ng-show="hidePrice">* * * * * *</td>
+                <td ng-show="showColour">{{ phone.colour }}</td>
+            </tr>
+        </tbody>
+    </table> 
+</div> -->
+<!-- <div ng-init='phones = [
+                {name : "redmi", price: 5999 , origin: "China"},
+                {name : "iPhone", price: 49719 , origin:"California"},
+                {name : "Nokia", price: 5688 , origin: "Finland"},
+                {name : "Realme", price: 8990 , origin: "China" },
+                {name : "Vivo", price: 15300 , origin: "China" },
+            ]'>
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Origin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="phone in phones">
+                <td>{{ phone.name }}</td>
+                <td>{{ phone.price }}</td>
+                <td>{{ phone.origin }}</td>
+            </tr>
+        </tbody>
+    </table> 
+</div> -->
+<!-- <div ng-controller="ngInclude">
+    Select view :
+    <select ng-model="phoneView">
+        <option value="phoneTable.html">Table</option>
+        <option value="phoneList.html">List</option>
+    </select>
+    <div ng-include="phoneView"></div>
+</div> -->
+
+<!-- <div ng-controller="customService">
+    <table>
+        <tr>
+            <td>Your String</td>
+            <td><input type="text" ng-model="input"></td>
+        </tr>
+        <tr>
+            <td>Result</td>
+            <td><input type="text" ng-model="output"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" ng-click="transform(input)" value="Process String" /></td>
+        </tr>
+    </table>
+</div> -->
+<!-- <div ng-controller="controllerAS as ca">
+    {{ ca.message }}
+</div> -->
+</body>
+</html>

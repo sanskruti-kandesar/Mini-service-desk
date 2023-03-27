@@ -1,0 +1,64 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+ul {
+    background: #3399ff;
+    padding: 20px;
+}
+
+ul li {
+    background: #cce5ff;
+    color: darkblue;
+    margin: 5px;
+}
+.header {
+    width: 800px;
+    height: 800px;
+    text-align: center;
+    background-color: #3399ff;
+}
+.footer {
+    background-color: #3399ff;
+    text-align: center;
+}
+.leftMenu {
+    height: 500px;
+    background-color: #112233;
+    width: 150px;
+    color: #cce5ff;
+}
+.mainContent {
+    height: 500px;
+    background-color: #E6E600;
+    width: 650px;
+}
+a {
+    display: block;
+    padding: 5px;
+}
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid black;
+}
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid black;
+}

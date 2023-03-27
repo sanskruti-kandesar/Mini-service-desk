@@ -1,0 +1,33 @@
+    <div style="height: 1px;"></div>
+
+    <div ng-controller="showtickets" ng-init="getTickets()" class="app__showTicket-main">
+        <!-- {{ msg ? "yes" : "no"}} -->
+        {{ isLoggedin ? "yes" : "no"}}
+            <!-- {{ error }} -->
+            <table border='1' style='border-collapse: collapse;'>
+                <thead>
+                    <tr>
+                        <th>Ticket Subject</th>
+                        <th>Ticket Message</th>
+                        <th>Issue Type</th>
+                        <th>Ticket Created</th>
+                        <th>File uploaded</th>
+                        <th>link to file</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ticket in tickets">
+                        <td> {{ ticket.ticketSubject }} </td>
+                        <td> {{ ticket.ticketMessage }} </td>
+                        <td> {{ ticket.category }} </td>
+                        <td> {{ ticket.dateCreated }} </td>
+                        <td ng-if="ticket.imagePath != null"> YES </td>
+                        <td ng-if="ticket.imagePath == null"> NO </td>
+                        <td ng-if="ticket.imagePath != null"> <a ng-href="{{ ticket.imagePath }}" target="_blank" >View Image</a> </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+</body>
+</html>

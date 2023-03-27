@@ -12,22 +12,24 @@ a:hover {
 }
 
 .app__showTicket-main {
-    margin-top: 80px;
+    margin: 80px;
 }
-
-.app__showTicket-table {
-    margin: 0 140px;
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+table a {
+    color: #660033;
+}
+  
+td, th {
+    margin: 0 100px;
     border: 2px solid #003399;
-    padding: 20px;
+    padding: 15px;
 }
-.app__showTicket-ticket h2 {
-    color: #003399;
-}
-.app__showTicket-ticket p {
-    color: #ff6600;
-}
-.app__showTicket-ticket span {
-    color: #404040;
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 /*                 HEADER                */

@@ -1,0 +1,128 @@
+<!-- <html lang="en"  ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <base href="<php echo base_url('/index.php/a/')?>">
+    <link rel="stylesheet" href="css/AddTicket.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header class="app__header">
+        <div class="app__header-div">
+        <img class="app__header-logo" src="<?php echo base_url('images/logo.png')?>" alt="logo" />
+            <h1 class="app__header-h1">Almashines</h1>
+        </div>
+
+        <div class="app__header-menu">
+            <button onclick="openMenu()" style="background-color: transparent; border: none;">
+                <img id="menu" class="app__header-img" src="<?php echo base_url('images/menu.png') ?>" style="display: block;">
+                <img id="cancel" class="app__header-img" src="<?php echo base_url('images/cancel.png') ?>" style="display: none;padding: 10px;width: 60px;height: 60px;" >
+            </button>
+                  <ul id="list" class="app__header-menu-list" style="display: none;">
+                      <li class="app__header-menu-item">
+                          <a href="<?php echo base_url() ?>">Home</a>
+                      </li>
+                      <li class="app__header-menu-item">
+                          <a href="<?php echo base_url('showtickets') ?>">My Area</a>
+                      </li>
+                      <li class="app__header-menu-item">
+                          <a href="<?php echo base_url() ?>">Knowledge Base</a>
+                      </li>
+                      <li class="app__header-menu-item">
+                          <a href="<?php echo base_url() ?>">Community</a>
+                      </li>
+                        <li class="app__header-menu-item active">
+                        <a href="<?php echo base_url('addticket') ?>">Add Ticket</a>
+                        </li>
+                        <li class="app__header-menu-item">
+                        <a href='
+                        <?php 
+                        echo base_url()."logout"; 
+                        ?>
+                        '>
+                        Logout</a>  
+                        </li>
+                    
+                      </li>
+                  </ul>
+          </div> 
+        
+        <ul id="menu-list" class="app__header-list">
+            <li class="app__header-list-item" title="Home"><a href="<?php echo base_url() ?>">Home</a></li>
+            <li class="app__header-list-item"><a href="<?php echo base_url('showtickets')?>">My Area</a></li>
+            <li class="app__header-list-item"><a href="<?php echo base_url() ?>">Knowledge Base</a></li>
+            <li class="app__header-list-item"><a href="<?php echo base_url() ?>">Community</a></li>
+            <li class='app__header-list-item active'><a href='<?php echo base_url('addticket') ?>'>Add Ticket</a></li>
+            <li class='app__header-list-item'><a href='<?php echo base_url()."logout"; ?>'>Logout</a> </li>
+            <li class="app__header-list-item">A<sup><small>+</small></sup></li>
+        </ul>
+    </header> -->
+
+    <div style="height: 1px;"></div>
+    <div class="app__createAcc-line">
+        <span>MyArea / Submit a Tickets</span>
+        <div class="search-container">
+            <form class="app__search">
+                <input class="app__div1-search" type="text" placeholder="Search articles">
+                <input class="app__div1-button" type="image" src="images/search.png" alt="search">
+            </form>
+        </div>
+    </div>
+    <div class="addticket-main">
+        <div class="submit_ticket-form" ng-controller="AddTicketController">
+            <h1>Submit a ticket</h1>
+            <p>Ticket Information</p>
+            <span style="color: #FF0000">{{ error }}</span><br>
+           
+                <form ng-submit="submitTicket(subject,message,category)" enctype="multipart/form-data">
+                <label for="subject">Subject</lable><br>
+                <input type="text" name="subject" class="submit_ticket-form-sub" ng-model="subject" required>
+                <br>
+
+                <label for="message">Message</lable><br>
+                <textarea name="message" ng-model="message" required></textarea>
+                <br>
+
+                <label for="category">Issue Type</lable><br>
+                <select name="category" ng-model="category">
+                    <option value="Manage Account" true>Manage Account</option>
+                    <option value="Privacy">Privacy</option>
+                    <option value="Report">Report</option>
+                    <option value="Terms and Policies">Terms and Policies</option>
+                    <option value="Others">Others</option>
+                </select><br>
+
+                <label for="attachment">Attach file</label><br>
+                <input type="file" name="attachment" class="submit_ticket-form-file" ng-model="file"><br><br>
+
+                <input type="submit" value="submit" name="submit">
+                <input type="reset" value="Discard" name="reset">
+            </form>
+        </div></div>
+        <div class="app__section-div3">
+                <h2 class="div3-h2">Popular Articles</h3><hr>
+
+                    <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="article-img" src="images/article.png" alt="">
+                        <p class="article-text">How to add ticket ?</p>
+                    </div>
+                    <br>
+                    <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="article-img" src="images/article.png" alt="">
+                        <p class="article-text">How to add members ?</p>
+                    </div>
+                    <br>
+                    <div style="display: flex;flex-direction: row;align-items: center;">
+                        <img class="article-img" src="images/article.png" alt="">
+                        <p class="article-text">How to see ticket status ?</p>
+                    </div>
+        </div>
+    </div>
+
+</body>
+</html>

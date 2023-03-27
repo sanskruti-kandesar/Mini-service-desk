@@ -7,3 +7,5 @@ application/cache/*
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
+
+!angular-mini-service-desk

@@ -1,4 +1,3 @@
-
 var menu_list = document.getElementById('menu_list');
 var list_item = document.getElementById('app__header-list-item');
 

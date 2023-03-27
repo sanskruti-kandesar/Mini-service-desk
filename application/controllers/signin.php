@@ -7,55 +7,57 @@ class Signin extends CI_Controller {
         $this->load->model('signin_model');
     }
 
-	public function index()
-	{
-		$this->load->helper(array('form', 'url'));
+	// public function index()
+	// {
+	// 	$this->load->helper(array('form', 'url'));
 
-		$this->load->library('form_validation');
-		$this->load->library('session','database');
+	// 	$this->load->library('form_validation');
+	// 	$this->load->library('session','database');
 
-		$this->form_validation->set_rules('email', 'Email', 'trim|required');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+	// 	$this->form_validation->set_rules('email', 'Email', 'trim|required');
+	// 	$this->form_validation->set_rules('password', 'Password', 'trim|required');
 		
-		if ($this->form_validation->run() == FALSE)
-		{
-			if($this->session->userdata('userID') == null){
-				$this->load->view('authentication/signin');
-				$this->load->view('templates/footer');
-			}
-			else {
-				redirect(base_url());
-			}
-		}
-		else
-		{
-			$this->process();
-		}
-	}
+	// 	if ($this->form_validation->run() == FALSE)
+	// 	{
+	// 		if($this->session->userdata('userID') == null){
+	// 			// $this->load->view('main');
+	// 		}
+	// 		else {
+	// 			redirect(base_url());
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		$this->process();
+	// 	}
+	// }
 
 	public function process() {
-		$email = $this->input->post('email');
-		$password = md5($this->input->post('password'));
+		$userdata = json_decode(file_get_contents('php://input'));
+		$email = $userdata->email;
+		$password = md5($userdata->password);
+		// var_dump($userdata->email);
 
-		$query = $this->db->query("SELECT * FROM `users` WHERE `userEmail` = '$email'");
-		
-		if($query->num_rows() == 1) {
-			$query = $this->db->query("SELECT * FROM `users` WHERE `userEmail` = '$email' AND `userPassword` = '$password'");
+		$query = $this->db->query("SELECT * FROM `users` WHERE `userEmail` = '$email' AND `userPassword` = '$password'");
 			if($query->num_rows() == 1) {
-				// echo "login successful". "<br>";
+				// var_dump($userdata->email);
 				$data['users'] = $this->signin_model->get_data($email);
 				$userID = $data['users']['userID'];
 				$this->session->set_userdata('userID', $userID);
-				// echo "YOUR userID is : " . $data['users']['userID'];
-				redirect(base_url('addticket'));
+				$response = array('status' => 'success');
+				
+				$this->output
+					->set_status_header(200)
+					->set_content_type('application/json')
+					->set_output(json_encode($response));
 			}
-			else {
-				echo "<span style='color: #FF0000'>" . "WRONG PASSWORD ENTERED" . "</span>";
+			else if($query->num_rows() == 0){
+				$response = array(
+					'status' => 'failed',
+					'message' => 'USER DOES NOT EXISTS'
+				);
+				$this->output->set_output(json_encode($response));
 			}
-		}
-		else {
-			echo "<span style='color: #FF0000'>" . "USER DOES NOT EXISTS" . "</span>";
-		}
-	} 	
+	}
 	}
 ?>

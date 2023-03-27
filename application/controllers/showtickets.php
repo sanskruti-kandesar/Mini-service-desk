@@ -5,16 +5,20 @@ class Showtickets extends CI_Controller {
         parent::__construct();
         $this->load->model('showtickets_model');
     }
-	public function index()
-	{
-        if($this->session->userdata('userID') == null){
-			redirect(base_url('signin'));
-		}
-		else {
-            $userID = $this->session->userdata('userID');
-            $data['tickets'] = $this->showtickets_model->get_tickets($userID);
-            $this->load->view('ticket/showtickets', $data);
-        }
-	}
+	// public function index()
+	// {
+    //     if($this->session->userdata('userID') == null){
+	// 		redirect(base_url('signin'));
+	// 	}
+	// 	else {
+    //         $this->load->view('main');
+    //     }
+	// }
+    // call this function from $Angular $http request
+    public function getTickets() {
+        $userID = $this->session->userdata('userID');
+        $data = $this->showtickets_model->get_tickets($userID);
+        echo json_encode($data);
+    }
 }
 ?>
