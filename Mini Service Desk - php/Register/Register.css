@@ -1,0 +1,251 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+}
+a:hover {
+    color: #ff6600;
+}
+
+/*          FIRST LINE           */
+
+.app__createAcc-line {
+    margin-top: 80px;
+    background-color: rgb(235,235,235);
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+}
+.app__createAcc-line span {
+    margin-left: 100px;
+}
+.app__search {
+    display: flex;
+    flex-direction: row;
+    padding: 13px;
+    width: 500px;
+    height: 35px;
+    margin: 0px 100px;
+    
+}
+.app__div1-search {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: none;
+
+}
+.app__div1-button {
+    width: 43px;
+    height: 35px;
+    float: right;
+    /* background-color: #ff6600; */
+}
+
+/*          Register form         */
+
+.app__register-main {
+    display: flex;
+    padding: 50px 120px;
+}
+
+.app__register-form {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+.app__register-form h1 {
+    font-size: 25px;
+}
+.app__register-form span {
+    font-size: 15px;
+    color: #505050;
+    margin: 3px 0 8px;
+}
+.app__register-form-input {
+    height: 40px;
+    margin: 15px 0;
+    width: 400px;
+}
+.signup_form_button {
+    display: flex;
+    margin: 5px 0 5px 330px;
+    padding: 12px;
+    font-size: 15px;
+    background-color: #ff6600;
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
+
+.app__register-list {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+.app__register-list-item {
+    display: flex;
+    margin: 8px;
+}
+.app__register-list-item img {
+    width: 80px;
+    height: 80px;
+}
+.app__register-list-item p {
+    color:  gray;
+}
+
+/*                 HEADER                */
+
+.app__header {
+    width: 100%;
+
+    padding: 0 15px;
+    display: flex;
+    flex-flow: row wrap;
+
+    justify-content: space-between;
+    position: fixed;
+    /* change height  */
+    height: 80px;
+
+    background: url("../images/background.png");
+    background-size: cover;
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2;
+    
+    /* Defines how the width and height of an element are calculated */
+    box-sizing: border-box;
+}
+
+.app__header-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.app__header-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px;
+}
+.app__header-h1 {
+    color: white;
+    font-size: 25px;
+}
+.app__header-menu {
+    display: none;
+}
+.app__header-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.app__header-list-item {
+    padding: 18px 18px 22px;
+    position: relative;
+    color: white;
+    /* box-sizing: border-box */
+}
+.app__header-list-item:hover {
+    border-bottom: 4px solid #ff6600;
+}
+
+.app__header-menu{
+    /* display: none; */
+}
+.app__header-cancel {
+    display: none;
+    height: 60px;
+    width: 60px;
+}
+.app__header-menu-list{
+    /* display: none; */
+    background-color: #003399;
+    list-style-type: none;
+    position: absolute;
+    right: 35;
+    padding: 5px;
+}
+.app__header-menu-item {
+    padding: 5px;
+}
+.app__header-menu-item:hover, .active {
+    transition: 0.3s ease-out;
+    color: #ff6600;
+}
+
+@media screen and (max-width:540px) {
+    .app__header {
+        height: 60px;
+        padding: 0 15px;
+    }
+    .app__header-div {
+        height: 50px;
+    }
+    .app__header-logo {
+        margin-left: 0;
+    }
+    .app__header-h1 {
+        font-size: 23px;
+    }
+    .app__header-img {
+        display: flex;
+        height: 70px !important;
+        width: 70px !important;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .app__header-list{
+        display: none;
+    }
+    .app__header-menu {
+        display: block;
+    }
+    .app__header-img {
+        display: flex;
+        height: 80px;
+        width: 80px;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .app__createAcc-line span {
+        margin-left: 30px;
+        font-size: 14px;
+    }
+    .app__search {
+        width: 300px;
+        margin: 0px 30px;
+    }
+    .app__div1-button {
+        width: 40px;
+        height: 35px;
+    }
+}
+@media screen and (max-width:540px) {
+    .app__createAcc-line {
+        display: flex;
+        flex-direction: column;
+        margin-top: 60px;
+        height: 100px;
+    }
+    .app__createAcc-line span {
+        margin: 10px 20px;
+        font-size: 14px;
+    }
+    .app__search {
+        width: 440px;
+    }
+}
